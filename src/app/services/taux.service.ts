@@ -13,10 +13,7 @@ export class TauxService {
   private currentTaux: number = 1.1;
   tauxObservable = new ReplaySubject<number>(1);
 
-  public getNewTaux() {
-    return this.tauxObservable.next(this.currentTaux);
-  }
-
+  // tax edition
   private changeTaux() {
     this.currentTaux +=
       Math.floor(
@@ -25,7 +22,7 @@ export class TauxService {
       ) / 100;
   }
 
-  //Change the current taux each 3 seconds
+  //start the changement of the current taux each 3 seconds
   public startTauxChangements() {
     interval(3000).subscribe(() => {
       this.changeTaux();

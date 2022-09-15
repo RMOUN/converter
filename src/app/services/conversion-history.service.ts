@@ -7,11 +7,13 @@ import { ConverisonModel } from '../model/ConversionModel';
 })
 export class ConversionHistoryService {
   constructor() {}
+  //to broadcast the new converions in order to store the history
   historyObservable = new ReplaySubject<ConverisonModel>(1);
+
   public getObservable() {
     return this.historyObservable.asObservable();
   }
-
+  //Emitt the new history object
   public updateHistory(newConversion: ConverisonModel) {
     this.historyObservable.next(newConversion);
   }
